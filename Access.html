@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .button-34 {
+            background: #ff3507;
+            border-radius: 999px;
+            box-shadow: #ff3507 0 10px 20px -10px;
+            box-sizing: border-box;
+            color: #FFFFFF;
+            cursor: pointer;
+            font-family: Inter, Helvetica, "Apple Color Emoji", "Segoe UI Emoji", NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 24px;
+            opacity: 1;
+            outline: 0 solid transparent;
+            padding: 8px 18px;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            width: fit-content;
+            word-break: break-word;
+            border: 0;
+        }
+    </style>
+    <script>
+        function welcome() {
+
+            window.location = "https://accounts.zoho.in/oauth/v2/auth?scope=ZohoBooks.contacts.READ,ZohoBooks.bills.READ,ZohoBooks.vendorpayments.READ&client_id=1000.3GPDLDRMVCDEPXQILXS2Y3KMLPGI7G&state=testing&response_type=code&redirect_uri=https://api.frigate.ai&access_type=offline";
+
+        }   
+    </script>
+</head>
+
+<body>
+    <h2>Welcome to Zoho Books Access</h2>
+    <button onclick="welcome()" class="button-34"> Get Access</button>
+</body>
+
+</html>
