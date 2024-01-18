@@ -47,6 +47,9 @@
     }
 </style>
 
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
 
 
 <body>
@@ -75,7 +78,7 @@
 
         // Construct the token request parameters
         const tokenRequestData = new URLSearchParams({
-            code: authorizationCode,
+            code: "1000.272c13ab08dee20301c720803e177a7f.aa137000cf82977269b18c9f50d59f54",
             client_id: clientId,
             client_secret: clientSecret,
             redirect_uri: redirectUri,
@@ -83,18 +86,11 @@
         });
 
         // Make an AJAX request to exchange the code for access and refresh tokens
-        fetch(tokenEndpoint, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: tokenRequestData,
-        })
-            .then(response => response.json())
-            .then(data => {
+        axios.post(tokenEndpoint, tokenRequestData)
+            .then(response => {
                 // Handle the response containing the access and refresh tokens
-                const accessToken = data.access_token;
-                const refreshToken = data.refresh_token;
+                const accessToken = response.data.access_token;
+                const refreshToken = response.data.refresh_token;
 
                 console.log('Access Token:', accessToken);
                 console.log('Refresh Token:', refreshToken);
