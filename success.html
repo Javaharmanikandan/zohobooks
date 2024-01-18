@@ -61,8 +61,51 @@
 
     <script>
         const searchParams = new URLSearchParams(window.location.search);
-        const code = searchParams.get('code');
+        const authorizationCode = searchParams.get('code');
         document.getElementById("myspan").innerText = code.toString();
+
+
+
+        const clientId = '1000.3GPDLDRMVCDEPXQILXS2Y3KMLPGI7G';
+        const clientSecret = 'c91e5df5f0c9d39fa618028a5bb782294da0a2169e';
+        const redirectUri = 'https://zohobooks.vercel.app/success.html';
+
+        // Zoho Books token endpoint
+        const tokenEndpoint = 'https://accounts.zoho.in/oauth/v2/token';
+
+        // Construct the token request parameters
+        const tokenRequestData = new URLSearchParams({
+            code: authorizationCode,
+            client_id: clientId,
+            client_secret: clientSecret,
+            redirect_uri: redirectUri,
+            grant_type: 'authorization_code',
+        });
+
+        // Make an AJAX request to exchange the code for access and refresh tokens
+        fetch(tokenEndpoint, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: tokenRequestData,
+        })
+            .then(response => response.json())
+            .then(data => {
+                // Handle the response containing the access and refresh tokens
+                const accessToken = data.access_token;
+                const refreshToken = data.refresh_token;
+
+                console.log('Access Token:', accessToken);
+                console.log('Refresh Token:', refreshToken);
+
+                // Now you can use the access token for API requests
+                // and refresh token for refreshing the access token when it expires
+            })
+            .catch(error => {
+                console.error('Error exchanging code for tokens:', error);
+            });
+
     </script>
 </body>
 
