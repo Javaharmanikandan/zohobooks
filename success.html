@@ -39,7 +39,15 @@
         display: inline-block;
         margin: 0 auto;
     }
+
+    span {
+        font-size: 18px;
+        font-weight: bold;
+        color: #9ABC66;
+    }
 </style>
+
+
 
 <body>
     <div class="card">
@@ -47,9 +55,15 @@
             <i class="checkmark">✓</i>
         </div>
         <h3>Success</h3>
-        <p>Verifycation Success Your Code geting Success Fully!</p><br>
-        <p>code:<span>JYGGJHJHGJHGJHGY^%$^%%&*&(*9)</span></p>
+        <p>Verification Success Your Code geting Successfully!</p><br>
+        <p>code - <span id="myspan"> </span></p>
     </div>
+
+    <script>
+        const searchParams = new URLSearchParams(window.location.search);
+        const code = searchParams.get('code');
+        document.getElementById("myspan").innerText = code.toString();
+    </script>
 </body>
 
 </html>
